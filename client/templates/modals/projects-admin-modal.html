@@ -1,0 +1,113 @@
+<!-- Projects Admin Modal -->
+ <div id="projectsAdminModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Admin Panel - Manage Projects</h2>
+            <button class="close-button" id="closeProjectsAdminModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="admin-tabs">
+                <button class="admin-tab-button active" data-admin-tab="list">Projects List</button>
+                <button class="admin-tab-button" data-admin-tab="add">Add Project</button>
+                <button class="admin-tab-button" data-admin-tab="edit">Edit Project</button>
+            </div>
+
+            <!-- Projects List Tab -->
+            <div id="admin-list" class="admin-tab-content active">
+                <div id="projectsList" class="projects-list">
+                    <!-- Projects will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Add Project Tab -->
+            <div id="admin-add" class="admin-tab-content">
+                <form id="addProjectForm" class="project-form">
+                    <h3>Add New Project</h3>
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" name="title" required placeholder="Project Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea name="description" required placeholder="Project description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tools (comma-separated):</label>
+                        <input type="text" name="tools" required placeholder="SQL, Python, PowerBI">
+                    </div>
+                    <div class="form-group">
+                        <label>Icon:</label>
+                        <select name="icon" id="addIconSelect" required>
+                            <option value="">-- Select an icon --</option>
+                        </select>
+                        <div class="icon-preview" id="addIconPreview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub URL:</label>
+                        <input type="url" name="githubUrl" required placeholder="https://github.com/username/repo">
+                    </div>
+                    <div class="form-group">
+                        <label>README URL:</label>
+                        <input type="url" name="readmeUrl" required placeholder="https://raw.githubusercontent.com/username/repo/main/README.md">
+                    </div>
+                    <div class="form-group">
+                        <label>Order:</label>
+                        <input type="number" name="order" required placeholder="1" min="1">
+                        <small>Projects will be reordered automatically</small>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Project</button>
+                </form>
+            </div>
+
+            <!-- Edit Project Tab -->
+            <div id="admin-edit" class="admin-tab-content">
+                <div class="form-group">
+                    <label>Select Project to Edit:</label>
+                    <select id="editProjectSelect">
+                        <option value="">-- Select a project --</option>
+                    </select>
+                </div>
+                <form id="editProjectForm" class="project-form" style="display: none;">
+                    <h3>Edit Project</h3>
+                    <input type="hidden" name="id">
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea name="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tools (comma-separated):</label>
+                        <input type="text" name="tools" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Icon:</label>
+                        <select name="icon" id="editIconSelect" required>
+                            <option value="">-- Select an icon --</option>
+                        </select>
+                        <div class="icon-preview" id="editIconPreview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub URL:</label>
+                        <input type="url" name="githubUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>README URL:</label>
+                        <input type="url" name="readmeUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Order:</label>
+                        <input type="number" name="order" required min="1">
+                        <small>Projects will be reordered automatically</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Update Project</button>
+                        <button type="button" class="btn-danger" id="deleteProjectBtn">Delete Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+ </div>

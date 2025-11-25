@@ -1,0 +1,20 @@
+{
+    "name": "sendija-portfolio",
+    "version": "1.0.0",
+    "description": "Data analysis web-portfolio",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js"
+    },
+    "keywords": [
+        "portfolio",
+        "data-analysis"
+    ],
+    "author": "Sendija Ieva Kurzemniece",
+    "license": "ISC",
+    "dependencies": {
+        "express" : "^4.18.2",
+        "express-session": "^1.18.2",
+        "marked": "16.3.0"
+    }
+}

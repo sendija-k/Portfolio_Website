@@ -1,0 +1,60 @@
+<!-- Home Admin Modal -->
+<div id="homeAdminModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Edit Home Page</h2>
+            <button class="close-button" id="closeHomeAdminModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="homeEditForm" class="project-form">
+                <h3>Page Title</h3>
+                <div class="form-group">
+                    <label>Header Title:</label>
+                    <input type="text" name="title" id="homeTitle" placeholder="Page title">
+                </div>
+
+                <h3>Welcome Section</h3>
+                <div class="form-group">
+                    <label>Welcome Heading:</label>
+                    <input type="text" name="welcomeHeading" id="homeWelcomeHeading" required placeholder="Welcome heading">
+                </div>
+                <div class="form-group">
+                    <label>Welcome Description:</label>
+                    <textarea name="welcomeDescription" id="homeWelcomeDescription" required placeholder="Welcome Description"></textarea>
+                </div>
+
+                <h3>About Me Section</h3>
+                <div class="form-group">
+                    <label>About Heading:</label>
+                    <input type="text" name="aboutHeading" id="homeAboutHeading" required placeholder="About heading">
+                </div>
+                <div class="form-group">
+                    <label>About Preview (Home Page):</label>
+                    <textarea name="aboutPreview" id="homeAboutPreview" required placeholder="Short about preview"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Full Text (About Page) - Paragraph 1:</label>
+                    <textarea name="aboutFull1" id="homeAboutFull1" required placeholder="First paragraph"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Full Text - Paragraph 2:</label>
+                    <textarea name="aboutFull2" id="homeAboutFull2" required placeholder="Second paragraph"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Full Text - Paragraph 3:</label>
+                    <textarea name="aboutFull3" id="homeAboutFull3" required placeholder="Third paragraph"></textarea>
+                </div>
+
+                <h3>Photo</h3>
+                <div class="form-group">
+                    <label>Photo URL:</label>
+                    <input type="url" name="photoUrl" id="homePhotoUrl" placeholder="https://example.com/photo.jpg">
+                    <small>Leave empty to show placeholder</small>
+                </div>
+                <div class="photo-preview" id="homePhotoPreview"></div>
+
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>

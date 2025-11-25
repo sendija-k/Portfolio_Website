@@ -1,0 +1,18 @@
+{
+  "title": "Data Analysis Portfolio | Sendija Kurzemniece",
+  "welcome": {
+    "heading": "Welcome section on homepage",
+    "description": "Hi, I'm Sendija (pronounced SEHN-dee-yah) - an aspiring data analyst with a background in language work and a growing toolkit in Excel, SQL, Power BI, and Python. Welcome to my portfolio."
+  },
+  "about": {
+    "heading": "About Me",
+    "preview": "I came into data from a non-traditional path, starting in Asian Studies and freelance translation before discovering how much I enjoy analytical work. Now I'm focused on developing strong technical skills and building projects that reflect what I'm learning.",
+    "full": [
+      "I'm Sendija, a detail-oriented and curious graduate who recently transitioned from a background in Asian Studies and freelance translation into data analytics. For years, I worked closely with language, structure, and communication, and I realized that many of the things I enjoyed - precision, pattern-finding, and clear storytelling - naturally carried over into data analysis.",
+      "Once I began exploring tools like Excel, SQL, Power BI, and Python, I found that I genuinely liked working with datasets, discovering insights, and creating clean, meaningful visualizations. Since then, I've been steadily building my technical foundation through self-learning and courses, including the Google Advanced Data Analytics Certification, while creating hands-on projects to strengthen my skills.",
+      "What motivates me now is the opportunity to turn information into something practical - whether that's a dashboard that tells a clear story, an analysis that reveals trends, or a dataset transformed into something easier to work with. My portfolio reflects the skills I'm building, how I approach problems, and the areas I want to keep improving.",
+      "Outside of data, I'm someone who values learning for its own sake, enjoys creative projects, and appreciates work that feels both challenging and meaningful. As I continue developing my technical skills, I'm looking for opportunities where I can contribute, learn, and grow."
+    ],
+    "photoUrl": "/client/profile/photo.jpg"
+  }
+}

@@ -1,0 +1,25 @@
+<!-- Blog Admin Modal -->
+ <div id="blogAdminModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Edit Blog Page</h2>
+            <button class="close-button" id="closeBlogAdminModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="blogEditForm" class="project-form">
+                <div class="form-group">
+                    <label>Blog Title:</label>
+                    <input type="text" name="title" id="blogTitleInput" required placeholder="Blog title">
+                </div>
+
+                <div class="form-group">
+                    <label>Blog Content (HTML):</label>
+                    <textarea name="content" id="blogContentInput" rows="15" required placeholder="Blog content (HTML allowed)"></textarea>
+                    <small>You can use HTML tags for formatting</small>
+                </div>
+
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+ </div>
