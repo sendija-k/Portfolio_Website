@@ -9,18 +9,18 @@ const PORT = process.env.PORT || 2000;
 
 // Admin credentials (in production, use environment variables and hashed passwords)
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'stardew0505';
 
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your-scret-key-change-in-production',
+    secret: process.env.SESSION_SECRET || 'your-secret-key-change-in-production',
     resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24, // 24 hours
         httpOnly: true,
         secure: false // Set to true if using HTTPS
-    } 
+    }
 }));
 
 // Middleware to parse JSON bodies
@@ -56,7 +56,7 @@ app.get('/api/markdown', async (req, res) => {
             if (response.statusCode === 200) {
                 res.json({ success: true, content: data });
             } else {
-                res.json({ success: false, content: 'Failed to fetch markdown: ${response.statusCode}' });
+                res.json({ success: false, error: 'Failed to fetch markdown: ${response.statusCode}' });
             }
         });
     }).on('error', (error) => {

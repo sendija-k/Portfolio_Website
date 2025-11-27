@@ -32,7 +32,7 @@ function initAuth() {
         const loginError = document.getElementById('loginError');
 
         try {
-            const response = await fetch('api/login', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ function initAuth() {
 // Check authentication status
 async function checkAuthentication() {
     try {
-        const response = await fetch('api/auth/status');
+        const response = await fetch('/api/auth/status');
         const data = await response.json();
         return data.authenticated;
     } catch (error) {

@@ -28,7 +28,7 @@ async function navigateToBlog() {
     // Load blog template if not already loaded
     const blogTab = document.getElementById('blog');
     if (!blogTab) {
-        const blogHTML = await loadTemplate('client/template/tabs/blog-tab.html');
+        const blogHTML = await loadTemplate('client/templates/tabs/blog-tab.html');
         const contentPanel = document.querySelector('.content-panel');
         contentPanel.insertAdjacentHTML('beforeend', blogHTML);
         // Attach back button event listener

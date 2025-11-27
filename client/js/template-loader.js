@@ -12,7 +12,7 @@ async function loadTemplate(path) {
     }
 }
 
-// Load all template into the page
+// Load all templates into the page
 async function loadAllTemplates() {
     // Load header
     const headerHTML = await loadTemplate('client/templates/header.html');
@@ -26,7 +26,7 @@ async function loadAllTemplates() {
     const contentPanel = document.querySelector('.content-panel');
     contentPanel.innerHTML = homeTabHTML + aboutTabHTML + projectsTabHTML;
 
-    // Load models
+    // Load modals
     const loginModalHTML = await loadTemplate('client/templates/modals/login-modal.html');
     const homeAdminModalHTML = await loadTemplate('client/templates/modals/home-admin-modal.html');
     const projectsAdminModalHTML = await loadTemplate('client/templates/modals/projects-admin-modal.html');

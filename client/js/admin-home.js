@@ -30,7 +30,7 @@ function initHomeAdmin() {
 
     // Close modal when clicking outside
     homeAdminModal.addEventListener('click', (e) => {
-        if (e.taget === homeAdminModal) {
+        if (e.target === homeAdminModal) {
             homeAdminModal.classList.remove('active');
         }
     });
@@ -40,7 +40,7 @@ function initHomeAdmin() {
     if (homeEditForm) {
         homeEditForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData(e.taget);
+            const formData = new FormData(e.target);
 
             // Update homeData object
             homeData.title = formData.get('title');
@@ -48,11 +48,11 @@ function initHomeAdmin() {
             homeData.welcome.description = formData.get('welcomeDescription');
             homeData.about.heading = formData.get('aboutHeading');
             homeData.about.preview = formData.get('aboutPreview');
-            homeData.about.fulee = [
+            homeData.about.full = [
                 formData.get('aboutFull1'),
                 formData.get('aboutFull2'),
                 formData.get('aboutFull3')
-            ]
+            ];
             homeData.about.photoUrl = formData.get('photoUrl') || '';
 
             // Save to server

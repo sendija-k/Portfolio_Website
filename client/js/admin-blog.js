@@ -30,7 +30,7 @@ function initBlogAdmin() {
 
     // Close modal when clicking outside
     blogAdminModal.addEventListener('click', (e) => {
-        if (e.taget === blogAdminModal) {
+        if (e.target === blogAdminModal) {
             blogAdminModal.classList.remove('active');
         }
     });
@@ -40,14 +40,14 @@ function initBlogAdmin() {
     if (blogEditForm) {
         blogEditForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData(e.taget);
+            const formData = new FormData(e.target);
 
             // Update blogData object
             blogData.title = formData.get('title');
             blogData.content = formData.get('content');
 
             // Save to server
-            const result = await saveBlogData(blogdata);
+            const result = await saveBlogData(blogData);
 
             if (result.success) {
                 alert('Blog data saved successfully!');

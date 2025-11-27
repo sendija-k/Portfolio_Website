@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     document.getElementById('editIconSelect').addEventListener('change', function() {
-        showIconPreview(this.value, 'editIconSelect');
+        showIconPreview(this.value, 'editIconPreview');
     });
 
     // Photo URL preview handler for home edit form

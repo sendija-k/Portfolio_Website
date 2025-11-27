@@ -71,7 +71,7 @@ function attachEventListeners() {
             tabButtons.forEach(btn => btn.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
 
-            document.querySelector(`[data-tab="projects"]`).classList.add('active');
+            document.querySelector('[data-tab="projects"]').classList.add('active');
             document.getElementById('projects').classList.add('active');
 
             // Switch to specific project
@@ -82,7 +82,7 @@ function attachEventListeners() {
             if (targetProjectButton) {
                 targetProjectButton.classList.add('active');
             }
-            
+
             document.getElementById(targetProject).classList.add('active');
         });
     });

@@ -89,7 +89,7 @@ async function saveProjectsData() {
         return true;
     } catch (error) {
         console.error('Error saving projects:', error);
-        alert('Error saving projects. Please check if the server is running.')
+        alert('Error saving projects. Please check if the server is running.');
         return false;
     }
 }
@@ -112,7 +112,7 @@ async function saveHomeData() {
         return true;
     } catch (error) {
         console.error('Error saving home data:', error);
-        alert('Error saving home data. Please check if the server is running.')
+        alert('Error saving home data. Please check if the server is running.');
         return false;
     }
 }

@@ -54,7 +54,7 @@ function initProjectsAdmin() {
     // Edit project select change handler
     const editProjectSelect = document.getElementById('editProjectSelect');
     if (editProjectSelect) {
-        editProjectSelect.addEventListener('change', function () {
+        editProjectSelect.addEventListener('change', function() {
             if (this.value) {
                 loadProjectForEdit(this.value);
             } else {
@@ -226,16 +226,15 @@ function editProject(projectId) {
 // Load project data into edit form
 function loadProjectForEdit(projectId) {
     const project = projectsData.projects.find(p => p.id === projectId);
-    console.log("here" + project);
     if (!project) return;
 
     const form = document.getElementById('editProjectForm');
     form.style.display = 'block';
 
-    form.elements['id'].vlaue = project.id;
-    form.elements['title'].vlaue = project.title;
-    form.elements['description'].vlaue = project.description;
-    form.elements['tools'].vlaue = project.tools.join(', ');
+    form.elements['id'].value = project.id;
+    form.elements['title'].value = project.title;
+    form.elements['description'].value = project.description;
+    form.elements['tools'].value = project.tools.join(', ');
 
     // Find icon key from svg
     const iconKey = project.icon.type !== 'custom' ? project.icon.type :
@@ -243,9 +242,9 @@ function loadProjectForEdit(projectId) {
     form.elements['icon'].value = iconKey;
     showIconPreview(iconKey, 'editIconPreview');
 
-    form.elements['githubUrl'].vlaue = project.githubUrl;
-    form.elements['readmeUrl'].vlaue = project.readmeUrl;
-    form.elements['order'].vlaue = project.order;
+    form.elements['githubUrl'].value = project.githubUrl;
+    form.elements['readmeUrl'].value = project.readmeUrl;
+    form.elements['order'].value = project.order;
 }
 
 // Reorder projects when a new order is assigned
