@@ -33,11 +33,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         showIconPreview(this.value, 'editIconPreview');
     });
 
-    // Photo URL preview handler for home edit form
-    document.getElementById('homePhotoUrl').addEventListener('input', function() {
-        updatePhotoPreview(this.value);
-    });
-
     // Show home admin button by default (since Home tab is active by default)
     // The button will prompt for login if user is not authenticated
     const adminHomeBtn = document.getElementById('adminHomeButton');

@@ -87,21 +87,17 @@ function renderHomeContent(data) {
         `<p>${paragraph}</p>`
     ).join('');
 
-    // Update photo containers
-    updatePhotoContainers(data.about.photoUrl);
+    // Update photo containers (about page only)
+    updatePhotoContainer(data.about.photoUrl);
 }
 
-// Update photo containers
-function updatePhotoContainers(photoUrl) {
-    const homePhotoContainer = document.getElementById('homePhotoContainer');
+// Update photo container (about page only, always use /profile/photo.jpg)
+function updatePhotoContainer() {
     const aboutPhotoContainer = document.getElementById('aboutPhotoContainer');
+    const photoUrl = '/client/profile/photo.jpg';
 
-    if (photoUrl && photoUrl.trim() !== '') {
-        homePhotoContainer.innerHTML = `<img src="${photoUrl}" alt="Profile photo">`;
+    if (aboutPhotoContainer) {
         aboutPhotoContainer.innerHTML = `<img src="${photoUrl}" alt="Profile photo">`;
-    } else {
-        homePhotoContainer.innerHTML = '<span>Photo</span>';
-        aboutPhotoContainer.innerHTML = '<span>Photo</span>';
     }
 }
 

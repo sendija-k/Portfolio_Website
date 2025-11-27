@@ -48,12 +48,12 @@ function initHomeAdmin() {
             homeData.welcome.description = formData.get('welcomeDescription');
             homeData.about.heading = formData.get('aboutHeading');
             homeData.about.preview = formData.get('aboutPreview');
-            homeData.about.full = [
-                formData.get('aboutFull1'),
-                formData.get('aboutFull2'),
-                formData.get('aboutFull3')
-            ];
-            homeData.about.photoUrl = formData.get('photoUrl') || '';
+            // Split by double newlines (blank lines) and filter out empty strings
+            homeData.about.full = formData.get('aboutFull')
+                .split(/\n\s*\n/)
+                .map(p => p.trim())
+                .filter(p => p.length > 0);
+            homeData.about.photoUrl = '/client/profile/photo.jpg';
 
             // Save to server
             const saved = await saveHomeData();
@@ -85,12 +85,6 @@ async function loadHomeAdminData() {
     form.elements['welcomeDescription'].value = homeData.welcome.description;
     form.elements['aboutHeading'].value = homeData.about.heading;
     form.elements['aboutPreview'].value = homeData.about.preview;
-    form.elements['aboutFull1'].value = homeData.about.full[0] || '';
-    form.elements['aboutFull2'].value = homeData.about.full[1] || '';
-    form.elements['aboutFull3'].value = homeData.about.full[2] || '';
-    form.elements['aboutFull4'].value = homeData.about.full[3] || '';
-    form.elements['photoUrl'].value = homeData.about.photoUrl || '';
-
-    // Show photo preview if URL exists
-    updatePhotoPreview(homeData.about.photoUrl);
+    // Join paragraphs with double newlines (blank lines)
+    form.elements['aboutFull'].value = homeData.about.full.join('\n\n');
 }
