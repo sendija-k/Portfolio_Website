@@ -2,7 +2,7 @@
   "projects": [
     {
       "id": "project1",
-      "title": "Predicting Employee Attrition (Google Advanced Analytics Certificate Capstone Project)",
+      "title": "Predicting Employee Attrition",
       "description": "Project using Random Forest and XGBoost models to predict employee attrition",
       "tools": [
         "Python"
@@ -24,8 +24,8 @@
         "PowerBI"
       ],
       "icon": {
-        "type": "bar-chart",
-        "svg": "<path d=\"M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v8h16v10zM7 10h2v7H7zm4 0h2v7h-2zm4 0h2v7h-2z\">"
+        "type": "chart-line",
+        "svg": "<path d=\"M3.5 18.5l6-6 4 4L22 6.92 20.59 5.5l-7.09 8L9.5 9.5 2 17l1.5 1.5z\"/>"
       },
       "githubUrl": "https://github.com/sendija-k/CRM_Sales_Project",
       "readmeUrl": "https://raw.githubusercontent.com/sendija-k/CRM_Sales_Project/main/README.md",
