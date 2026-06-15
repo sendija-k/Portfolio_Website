@@ -1,49 +1,37 @@
-// Main initialization
 document.addEventListener('DOMContentLoaded', async function() {
-    // Load all HTML templates first
     await loadAllTemplates();
 
-    // Initialize all admin panels and auth (after templates are loaded)
     initAuth();
     initHomeAdmin();
     initProjectsAdmin();
     initBlogAdmin();
 
-    // Load home data and render
     const homeDataResult = await loadHomeData();
     if (homeDataResult) {
         renderHomeContent(homeDataResult);
     }
 
-    // Load projects data and render
     const data = await loadProjectsData();
     if (data) {
         renderProjects(data);
     }
 
-    // Populate icon dropdowns
-    populateIconDropdowns();
+    const adminWrap = document.getElementById('adminDropdownWrap');
+    if (adminWrap) adminWrap.style.display = 'list-item';
 
-    // Icon preview handlers
-    document.getElementById('addIconSelect').addEventListener('change', function() {
-        showIconPreview(this.value, 'addIconPreview');
-    });
-
-    document.getElementById('editIconSelect').addEventListener('change', function() {
-        showIconPreview(this.value, 'editIconPreview');
-    });
-
-    // Show home admin button by default (since Home tab is active by default)
-    // The button will prompt for login if user is not authenticated
-    const adminHomeBtn = document.getElementById('adminHomeButton');
-    if (adminHomeBtn) {
-        adminHomeBtn.style.display = 'block';
+    const gearBtn = document.getElementById('adminGearButton');
+    const dropdown = document.getElementById('adminDropdown');
+    if (gearBtn && dropdown) {
+        gearBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', () => dropdown.classList.remove('open'));
+        dropdown.addEventListener('click', () => dropdown.classList.remove('open'));
     }
 
-    // Initialize keyboard shortcut handler for hidden blog page
     initBlogShortcut();
 
-    // Handle direct navigation to /blog URL
     if (window.location.pathname === '/blog') {
         handleBlogAccess();
     }

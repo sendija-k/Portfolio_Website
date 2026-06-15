@@ -13,8 +13,12 @@
     "author": "Sendija Ieva Kurzemniece",
     "license": "ISC",
     "dependencies": {
-        "express" : "^4.18.2",
+        "dotenv": "^17.4.2",
+        "express": "^4.18.2",
         "express-session": "^1.18.2",
         "marked": "16.3.0"
+    },
+    "devDependencies": {
+        "playwright": "^1.60.0"
     }
 }

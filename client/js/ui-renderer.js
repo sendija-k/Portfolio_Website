@@ -1,114 +1,147 @@
-// Render projects dynamically
-function renderProjects(data) {
-    if (!data || !data.projects) return;
-
-    // Sort projects by order
-    const sortedProjects = data.projects.sort((a, b) => a.order - b.order);
-
-    // Render home page project cards
-    const homeProjectsContainer = document.querySelector('.home-projects');
-    if (homeProjectsContainer) {
-        homeProjectsContainer.innerHTML = sortedProjects.map(project => `
-            <button class="home-project-card" data-project="${project.id}">
-                <svg class="project-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    ${project.icon.svg}
-                </svg>
-                <span class="project-title">${project.title}</span>
-                <div class="project-info-popup">
-                    <span class="description">${project.description}</span>
-                    <span class="tools">(${project.tools.join(', ')})</span>
-                </div>
-            </button>
-        `).join('');
-    }
-
-    // Render project menu buttons
-    const projectMenu = document.querySelector('.project-menu');
-    if (projectMenu) {
-        projectMenu.innerHTML = sortedProjects.map((project, index) => `
-            <button class="project-button ${index === 0 ? 'active' : ''}" data-project="${project.id}">
-                <svg class="project-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    ${project.icon.svg}
-                </svg>
-                ${project.title}
-                <span class="description">${project.description}</span>
-                <span class="tools">(${project.tools.join(', ')})</span>
-            </button>
-        `).join('');
-    }
-
-    // Render project details
-    const projectDetails = document.querySelector('.project-details');
-    if (projectDetails) {
-        projectDetails.innerHTML = sortedProjects.map((project, index) => `
-            <div id="${project.id}" class="project-content ${index === 0 ? 'active' : ''}">
-                <a href="${project.githubUrl}" target="_blank" class="github-link">
-                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    View on GitHub
-                </a>
-                <div class="markdown-content" id="${project.id}-markdown">
-                    <p>Loading project documentation...</p>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // Re-attach event listeners after rendering
-    attachEventListeners();
-
-    // Load markdown for all projects
-    loadProjectMarkdown();
+function esc(s) {
+    return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-// Render home content
+const BAR_HEIGHTS = [45, 70, 55, 90, 65, 80, 50, 75, 95, 60, 85, 40];
+const BARS_HTML = BAR_HEIGHTS.map((h, i) =>
+    `<div class="bar" style="height:${h}%;animation-delay:${(0.2 + i * 0.1).toFixed(1)}s"></div>`
+).join('');
+
+let scrollObserver = null;
+
+function setupScrollObserver() {
+    scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                scrollObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+}
+
+function renderFeatured(p) {
+    const wrap = document.getElementById('featured-project-wrap');
+    if (!wrap) return;
+    const titleHTML = p.titleBreak || esc(p.title);
+    const github = p.github || p.githubUrl || '#';
+    wrap.innerHTML = `
+        <a href="${esc(github)}" target="_blank" class="project-featured" id="feat-proj">
+            <div class="project-featured-visual">
+                <div class="project-chart">${BARS_HTML}</div>
+                <p class="project-featured-label">Featured Project</p>
+                <h3 class="project-featured-title">${titleHTML}</h3>
+                <div class="project-featured-metric">
+                    <span class="m-num">${esc(p.metric || '')}</span>
+                    <span class="m-lbl">${esc(p.metricLabel || '')}</span>
+                </div>
+            </div>
+            <div class="project-featured-info">
+                <div>
+                    <p class="project-description">${esc(p.description)}</p>
+                    ${p.description2 ? `<p class="project-description" style="margin-top:1rem;">${esc(p.description2)}</p>` : ''}
+                    <div class="project-stack">
+                        ${(p.tags || p.tools || []).map(t => `<span class="stack-tag">${esc(t)}</span>`).join('')}
+                    </div>
+                </div>
+                <span class="project-link">View on GitHub →</span>
+            </div>
+        </a>`;
+    const card = wrap.querySelector('#feat-proj');
+    if (card && scrollObserver) scrollObserver.observe(card);
+}
+
+function renderSecondary(projects) {
+    const wrap = document.getElementById('secondary-projects-wrap');
+    if (!wrap) return;
+    wrap.innerHTML = projects.map((p, idx) => {
+        const github = p.github || p.githubUrl || '#';
+        return `
+        <a href="${esc(github)}" target="_blank" class="project-card"
+           ${idx > 0 ? `style="transition-delay:${idx * 0.1}s"` : ''}>
+            <p class="card-num">0${idx + 2}</p>
+            <h3 class="card-title">${esc(p.title)}</h3>
+            <div class="card-metric">${esc(p.metric || '')}<span>${esc(p.metricLabel || '')}</span></div>
+            <p class="card-desc">${esc(p.description)}</p>
+            <div class="card-stack">
+                ${(p.tags || p.tools || []).map(t => `<span class="card-tag">${esc(t)}</span>`).join('')}
+            </div>
+        </a>`;
+    }).join('');
+    wrap.querySelectorAll('.project-card').forEach(el => {
+        if (scrollObserver) scrollObserver.observe(el);
+    });
+}
+
+function renderProjects(data) {
+    if (!data || !data.projects) return;
+    const projects = data.projects.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    const countEl = document.getElementById('projectsCount');
+    if (countEl) countEl.textContent = projects.length + ' projects / 2024–2025';
+
+    setupScrollObserver();
+    if (projects[0]) renderFeatured(projects[0]);
+    if (projects.length > 1) renderSecondary(projects.slice(1));
+
+    attachEventListeners();
+}
+
 function renderHomeContent(data) {
     if (!data) return;
 
-    // Update header title
-    document.getElementById('headerTitle').textContent = data.title;
-    document.title = data.title;
+    const logo = document.getElementById('navLogo');
+    if (logo && data.nav) logo.textContent = data.nav.logo;
 
-    // Update welcome section
-    document.getElementById('welcomeHeading').textContent = data.welcome.heading;
-    document.getElementById('welcomeDescription').textContent = data.welcome.description;
+    if (data.hero) {
+        const eyebrow = document.getElementById('heroEyebrow');
+        if (eyebrow) eyebrow.textContent = data.hero.eyebrow;
 
-    // Update about preview section
-    document.getElementById('aboutHeading').textContent = data.about.heading;
-    document.getElementById('aboutPreview').textContent = data.about.preview;
+        const heroName = document.getElementById('heroName');
+        if (heroName) heroName.innerHTML = data.hero.name.split('\n').map(esc).join('<br>');
 
-    // Update about page heading
-    document.getElementById('aboutPageHeading').textContent = data.about.heading;
+        const tagline = document.getElementById('heroTagline');
+        if (tagline) tagline.textContent = data.hero.tagline;
 
-    // Update about full text
-    const aboutFullText = document.getElementById('aboutFullText');
-    aboutFullText.innerHTML = data.about.full.map(paragraph =>
-        `<p>${paragraph}</p>`
-    ).join('');
-
-    // Update photo containers (about page only)
-    updatePhotoContainer(data.about.photoUrl);
-}
-
-// Update photo container (about page only, always use /profile/photo.jpg)
-function updatePhotoContainer() {
-    const aboutPhotoContainer = document.getElementById('aboutPhotoContainer');
-    const photoUrl = '/client/profile/photo.jpg';
-
-    if (aboutPhotoContainer) {
-        aboutPhotoContainer.innerHTML = `<img src="${photoUrl}" alt="Profile photo">`;
+        const skillStrip = document.getElementById('heroSkillStrip');
+        if (skillStrip && data.hero.skillTags) {
+            skillStrip.innerHTML = data.hero.skillTags
+                .map(t => `<span class="skill-tag">${esc(t)}</span>`).join('');
+        }
     }
+
+    if (data.about) {
+        const aboutBody = document.getElementById('aboutBody');
+        if (aboutBody && data.about.body) {
+            aboutBody.innerHTML = data.about.body.map(p => `<p>${esc(p)}</p>`).join('');
+        }
+    }
+
+    if (data.contact) {
+        const contactBody = document.getElementById('contactBody');
+        if (contactBody) contactBody.textContent = data.contact.body;
+
+        const contactLinks = document.getElementById('contactLinks');
+        if (contactLinks && data.contact.links) {
+            contactLinks.innerHTML = data.contact.links.map(l => `
+                <a href="${esc(l.href)}" class="contact-link"${l.href.startsWith('http') ? ' target="_blank"' : ''}>
+                    <span>${esc(l.label)}</span><span class="cl-arrow">→</span>
+                </a>`).join('');
+        }
+    }
+
+    if (data.footer) {
+        const footerLeft = document.getElementById('footerLeft');
+        if (footerLeft) footerLeft.textContent = data.footer.left;
+        const footerRight = document.getElementById('footerRight');
+        if (footerRight) footerRight.textContent = data.footer.right;
+    }
+
+    const nameText = data.hero ? data.hero.name.replace('\n', ' ') : 'Sendija Kurzemniece';
+    document.title = nameText + ' — Data Scientist';
 }
 
-// Update photo preview in admin form
-function updatePhotoPreview(url) {
-    const preview = document.getElementById('homePhotoPreview');
-    if (url && url.trim() !== '') {
-        preview.innerHTML = `<img src="${url}" alt="Photo preview">`;
-        preview.classList.add('show');
-    } else {
-        preview.innerHTML = '';
-        preview.classList.remove('show');
-    }
-}
+function updatePhotoContainer() {}
+function updatePhotoPreview() {}

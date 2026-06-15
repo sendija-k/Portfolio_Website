@@ -1,4 +1,3 @@
-// Home admin modal initialization
 function initHomeAdmin() {
     const adminHomeButton = document.getElementById('adminHomeButton');
     const homeAdminModal = document.getElementById('homeAdminModal');
@@ -9,82 +8,59 @@ function initHomeAdmin() {
         return;
     }
 
-    // Admin Home button click - check auth first
     adminHomeButton.addEventListener('click', async () => {
         const isAuthenticated = await checkAuthentication();
         if (isAuthenticated) {
             homeAdminModal.classList.add('active');
             await loadHomeAdminData();
         } else {
-            const loginModal = document.getElementById('loginModal');
-            loginModal.classList.add('active');
-            // Store which admin panel to open after login
+            document.getElementById('loginModal').classList.add('active');
             sessionStorage.setItem('pendingAdminPanel', 'home');
         }
     });
 
-    // Close home admin modal
     closeHomeAdminModal.addEventListener('click', () => {
         homeAdminModal.classList.remove('active');
     });
 
-    // Close modal when clicking outside
     homeAdminModal.addEventListener('click', (e) => {
-        if (e.target === homeAdminModal) {
-            homeAdminModal.classList.remove('active');
-        }
+        if (e.target === homeAdminModal) homeAdminModal.classList.remove('active');
     });
 
-    // Home edit form submission
     const homeEditForm = document.getElementById('homeEditForm');
     if (homeEditForm) {
         homeEditForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
 
-            // Update homeData object
-            homeData.title = formData.get('title');
-            homeData.welcome.heading = formData.get('welcomeHeading');
-            homeData.welcome.description = formData.get('welcomeDescription');
-            homeData.about.heading = formData.get('aboutHeading');
-            homeData.about.preview = formData.get('aboutPreview');
-            // Split by double newlines (blank lines) and filter out empty strings
-            homeData.about.full = formData.get('aboutFull')
+            homeData.hero.eyebrow  = formData.get('heroEyebrow');
+            homeData.hero.tagline  = formData.get('heroTagline');
+            homeData.hero.skillTags = formData.get('heroSkillTags')
+                .split(',').map(t => t.trim()).filter(t => t.length > 0);
+            homeData.about.body = formData.get('aboutBody')
                 .split(/\n\s*\n/)
                 .map(p => p.trim())
                 .filter(p => p.length > 0);
-            homeData.about.photoUrl = '/client/profile/photo.jpg';
+            homeData.contact.body = formData.get('contactBody');
 
-            // Save to server
             const saved = await saveHomeData();
-
             if (saved) {
-                // Update the page content
                 renderHomeContent(homeData);
-
-                // Close modal
                 homeAdminModal.classList.remove('active');
-
-                alert('Home page updated successfully!');
+                alert('Content updated successfully!');
             }
         });
     }
 }
 
-// Load home data into admin form
 async function loadHomeAdminData() {
-    if (!homeData) {
-        await loadHomeData();
-    }
-
+    if (!homeData) await loadHomeData();
     if (!homeData) return;
 
     const form = document.getElementById('homeEditForm');
-    form.elements['title'].value = homeData.title;
-    form.elements['welcomeHeading'].value = homeData.welcome.heading;
-    form.elements['welcomeDescription'].value = homeData.welcome.description;
-    form.elements['aboutHeading'].value = homeData.about.heading;
-    form.elements['aboutPreview'].value = homeData.about.preview;
-    // Join paragraphs with double newlines (blank lines)
-    form.elements['aboutFull'].value = homeData.about.full.join('\n\n');
+    form.elements['heroEyebrow'].value  = homeData.hero.eyebrow || '';
+    form.elements['heroTagline'].value  = homeData.hero.tagline || '';
+    form.elements['heroSkillTags'].value = (homeData.hero.skillTags || []).join(', ');
+    form.elements['aboutBody'].value    = (homeData.about.body || []).join('\n\n');
+    form.elements['contactBody'].value  = homeData.contact.body || '';
 }

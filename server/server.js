@@ -1,3 +1,5 @@
+require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
+
 const express = require('express');
 const path = require('path');
 const https = require('https');
@@ -7,13 +9,23 @@ const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 2000;
 
-// Admin credentials (in production, use environment variables and hashed passwords)
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'stardew0505';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+if (!ADMIN_USERNAME || !ADMIN_PASSWORD) {
+    console.error('ERROR: ADMIN_USERNAME and ADMIN_PASSWORD must be set in .env');
+    process.exit(1);
+}
+
+const SESSION_SECRET = process.env.SESSION_SECRET;
+if (!SESSION_SECRET) {
+    console.error('ERROR: SESSION_SECRET must be set in .env');
+    process.exit(1);
+}
 
 // Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'your-secret-key-change-in-production',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {

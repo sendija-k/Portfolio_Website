@@ -2,7 +2,7 @@
 <div id="projectsAdminModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Admin Panel - Manage Projects</h2>
+            <h2>Admin Panel — Manage Projects</h2>
             <button class="close-button" id="closeProjectsAdminModal">&times;</button>
         </div>
         <div class="modal-body">
@@ -14,9 +14,7 @@
 
             <!-- Projects List Tab -->
             <div id="admin-list" class="admin-tab-content active">
-                <div id="projectsList" class="projects-list">
-                    <!-- Projects will be loaded here -->
-                </div>
+                <div id="projectsList" class="projects-list"></div>
             </div>
 
             <!-- Add Project Tab -->
@@ -28,32 +26,28 @@
                         <input type="text" name="title" required placeholder="Project Title">
                     </div>
                     <div class="form-group">
+                        <label>Metric (e.g. 95.1%):</label>
+                        <input type="text" name="metric" placeholder="95.1%">
+                    </div>
+                    <div class="form-group">
+                        <label>Metric Label (e.g. AUC Score):</label>
+                        <input type="text" name="metricLabel" placeholder="AUC Score">
+                    </div>
+                    <div class="form-group">
                         <label>Description:</label>
-                        <textarea name="description" required placeholder="Project description"></textarea>
+                        <textarea name="description" required placeholder="Project description (shown on card)"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Tools (comma-separated):</label>
-                        <input type="text" name="tools" required placeholder="SQL, Python, PowerBI">
+                        <label>Second Paragraph (optional, featured project only):</label>
+                        <textarea name="description2" placeholder="Additional detail for the featured project card"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Icon:</label>
-                        <select name="icon" id="addIconSelect" required>
-                            <option value="">-- Select an icon --</option>
-                        </select>
-                        <div class="icon-preview" id="addIconPreview"></div>
+                        <label>Tags (comma-separated):</label>
+                        <input type="text" name="tags" required placeholder="Python, Scikit-learn, Pandas">
                     </div>
                     <div class="form-group">
                         <label>GitHub URL:</label>
-                        <input type="url" name="githubUrl" required placeholder="https://github.com/username/repo">
-                    </div>
-                    <div class="form-group">
-                        <label>README URL:</label>
-                        <input type="url" name="readmeUrl" required placeholder="https://raw.githubusercontent.com/username/repo/main/README.md">
-                    </div>
-                    <div class="form-group">
-                        <label>Order:</label>
-                        <input type="number" name="order" required placeholder="1" min="1">
-                        <small>Projects will be reordered automatically</small>
+                        <input type="url" name="github" required placeholder="https://github.com/username/repo">
                     </div>
                     <button type="submit" class="btn-primary">Add Project</button>
                 </form>
@@ -75,32 +69,28 @@
                         <input type="text" name="title" required>
                     </div>
                     <div class="form-group">
+                        <label>Metric:</label>
+                        <input type="text" name="metric">
+                    </div>
+                    <div class="form-group">
+                        <label>Metric Label:</label>
+                        <input type="text" name="metricLabel">
+                    </div>
+                    <div class="form-group">
                         <label>Description:</label>
                         <textarea name="description" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Tools (comma-separated):</label>
-                        <input type="text" name="tools" required>
+                        <label>Second Paragraph (optional):</label>
+                        <textarea name="description2"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Icon:</label>
-                        <select name="icon" id="editIconSelect" required>
-                            <option value="">-- Select an icon --</option>
-                        </select>
-                        <div class="icon-preview" id="editIconPreview"></div>
+                        <label>Tags (comma-separated):</label>
+                        <input type="text" name="tags" required>
                     </div>
                     <div class="form-group">
                         <label>GitHub URL:</label>
-                        <input type="url" name="githubUrl" required>
-                    </div>
-                    <div class="form-group">
-                        <label>README URL:</label>
-                        <input type="url" name="readmeUrl" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Order:</label>
-                        <input type="number" name="order" required min="1">
-                        <small>Projects will be reordered automatically</small>
+                        <input type="url" name="github" required>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn-primary">Update Project</button>
