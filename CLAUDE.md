@@ -102,3 +102,15 @@ The blog is intentionally hidden from the main navigation. It is only accessible
 - Direct navigation to `/blog` (returns 404 if not authenticated)
 
 The blog template is lazy-loaded on first access in `client/js/blog-shortcut.js`.
+
+## Future additions
+
+### Project screenshots / previews
+
+Add actual screenshots of dashboards and visualizations to the project cards:
+
+- Place images in `client/images/projects/`
+- **Featured card** — replace the animated bar chart watermark with a dashboard screenshot at ~0.6 opacity (title sits on top). Update `project-featured-visual` in the HTML rendered by `renderFeatured()` in `ui-renderer.js`.
+- **Secondary cards** — add a thumbnail image above the card content. Update `renderSecondary()` in `ui-renderer.js`.
+- Add an `image` field to each project in `data/projects.json` (e.g. `"image": "/client/images/projects/crm-sales.png"`).
+- The Power BI and Excel projects (CRM Sales, DS Salaries, Bike Sales) are the highest priority since their output is visual. The attrition project could use a feature importance chart or ROC curve.
