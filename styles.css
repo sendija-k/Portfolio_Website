@@ -96,7 +96,7 @@ nav.scrolled { border-color: var(--border); }
   align-items: end;
   padding: 8rem 3rem 5rem;
   position: relative; overflow: hidden;
-  min-height: 100vh;
+  min-height: min(100vh, 820px);
 }
 .hero-bg-text {
   position: absolute; top: 50%; right: -2rem;
