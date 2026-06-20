@@ -541,4 +541,19 @@ footer p {
 .photo-preview img { max-width: 200px; max-height: 200px; border-radius: 6px; }
 
 /* ── BLOG (hidden section) ── */
-.blog-content { max-width: 800px; margin: 0 auto; padding: 2rem; }
+#blog { max-width: 840px; margin: 0 auto; padding: 7rem 1.5rem 4rem; min-height: 100vh; }
+#blog #blogTitle { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); margin: 1rem 0 2rem; }
+.blog-content { max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+.back-to-home-button {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #334155;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.back-to-home-button:hover { background: #fff; border-color: #7fa8d5; }
