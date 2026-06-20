@@ -38,8 +38,15 @@ app.use(session({
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Serve static files from parent directory (Portfolio root)
-app.use(express.static(path.join(__dirname, '..')));
+// Serve static files from parent directory (Portfolio root).
+// Use no-cache so browsers (and Cloudflare) revalidate via ETag and pick up
+// deploys immediately — the site has no asset-versioning build step, so a long
+// cache would otherwise serve stale JS/CSS for hours after a change.
+app.use(express.static(path.join(__dirname, '..'), {
+    setHeaders: (res) => {
+        res.setHeader('Cache-Control', 'no-cache');
+    }
+}));
 
 // Authentication middleware
 function requireAuth(req, res, next) {
