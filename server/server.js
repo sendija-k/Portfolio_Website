@@ -163,6 +163,36 @@ app.post('/api/blog', requireAuth, async (req, res) => {
     }
 });
 
+// API endpoint to save the course plan (protected)
+app.post('/api/course-plan', requireAuth, async (req, res) => {
+    try {
+        const coursePlanData = req.body;
+        const filePath = path.join(__dirname, '..', 'data', 'course-plan.json');
+
+        await fs.writeFile(filePath, JSON.stringify(coursePlanData, null, 2), 'utf8');
+
+        res.json({ success: true, message: 'Course plan saved successfully' });
+    } catch (error) {
+        console.error('Error saving course plan:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// API endpoint to save the course catalog (protected)
+app.post('/api/course-catalog', requireAuth, async (req, res) => {
+    try {
+        const courseCatalogData = req.body;
+        const filePath = path.join(__dirname, '..', 'data', 'courses.json');
+
+        await fs.writeFile(filePath, JSON.stringify(courseCatalogData, null, 2), 'utf8');
+
+        res.json({ success: true, message: 'Course catalog saved successfully' });
+    } catch (error) {
+        console.error('Error saving course catalog:', error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
 // Route for the main page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
@@ -170,6 +200,11 @@ app.get('/', (req, res) => {
 
 // Route for the blog page (hidden, accessible only when logged in)
 app.get('/blog', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
+
+// Route for the course planner page (hidden, accessible only when logged in)
+app.get('/course', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 

@@ -21,11 +21,12 @@ async function loadAllTemplates() {
     ]);
     document.getElementById('main-content').innerHTML = heroHTML + aboutHTML + projectsHTML + contactHTML;
 
-    const [loginHTML, homeAdminHTML, projectsAdminHTML, blogAdminHTML] = await Promise.all([
+    const [loginHTML, homeAdminHTML, projectsAdminHTML, blogAdminHTML, courseDataAdminHTML] = await Promise.all([
         loadTemplate('client/templates/modals/login-modal.html'),
         loadTemplate('client/templates/modals/home-admin-modal.html'),
         loadTemplate('client/templates/modals/projects-admin-modal.html'),
         loadTemplate('client/templates/modals/blog-admin-modal.html'),
+        loadTemplate('client/templates/modals/course-data-admin-modal.html'),
     ]);
-    document.getElementById('modals-container').innerHTML = loginHTML + homeAdminHTML + projectsAdminHTML + blogAdminHTML;
+    document.getElementById('modals-container').innerHTML = loginHTML + homeAdminHTML + projectsAdminHTML + blogAdminHTML + courseDataAdminHTML;
 }

@@ -1,0 +1,31 @@
+{
+  "courses": [
+    { "code": "SC/MATH1013", "title": "Applied Calculus I", "terms": ["Winter", "Summer", "Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH1014", "title": "Applied Calculus II", "terms": ["Winter", "Summer", "Fall"], "prereq": ["SC/MATH1013"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH1019", "title": "Discrete Mathematics for Computer Science", "terms": ["Winter", "Summer", "Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH1025", "title": "Applied Linear Algebra", "terms": ["Winter", "Summer", "Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH1130", "title": "Introduction to Data Science", "terms": ["Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH1131", "title": "Introduction to Statistics I", "terms": ["Winter", "Summer", "Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH2015", "title": "Applied Multivariate and Vector Calculus", "terms": ["Winter", "Summer", "Fall"], "prereq": ["SC/MATH1025", "SC/MATH1014"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH2030", "title": "Elementary Probability", "terms": ["Winter", "Summer", "Fall"], "prereq": ["SC/MATH1014"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH2130", "title": "Principles and Techniques of Data Science", "terms": ["Winter"], "prereq": ["SC/MATH1130", "SC/MATH1131", "SC/MATH2030", "SC/MATH2015"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH2131", "title": "Introduction to Statistics II", "terms": ["Winter"], "prereq": ["SC/MATH1131", "SC/MATH2030", "SC/MATH2015"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH3330", "title": "Regression Analysis", "terms": ["Summer", "Fall"], "prereq": ["SC/MATH1131", ["LE/EECS1015", "LE/EECS1560"]], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH3333", "title": "Data analytics: A Hands-on Approach", "terms": ["Winter"], "prereq": ["SC/MATH1131", "LE/EECS1560"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH4036", "title": "Introduction to Statistical Machine Learning", "terms": ["Fall"], "prereq": ["SC/MATH3330", "SC/MATH3333"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH4931", "title": "Simulation and the Monte Carlo Methods", "terms": ["Winter"], "prereq": [["LE/EECS1560", "LE/EECS1015"], "SC/MATH2131"], "coreq": [], "yearLong": false },
+    { "code": "SC/MATH4949", "title": "Data Science Capstone Course", "terms": ["Fall"], "prereq": ["SC/MATH3330", "SC/MATH3333", "AP/WRIT2202"], "coreq": ["SC/MATH4036", "AP/PHIL3500"], "yearLong": true },
+    { "code": "LE/EECS1015", "title": "Introduction to Computer Science and Programming", "terms": ["Winter", "Summer", "Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "LE/EECS1516", "title": "Object Oriented Design and Principles using Python", "terms": ["Winter"], "prereq": ["LE/EECS1015"], "coreq": [], "yearLong": false },
+    { "code": "LE/EECS1560", "title": "Introduction to Computing for Mathematics and Statistics", "terms": ["Winter", "Fall"], "prereq": ["SC/MATH1013"], "coreq": ["SC/MATH1014", ["SC/MATH1131", "SC/MATH2030"]], "yearLong": false },
+    { "code": "LE/EECS2502", "title": "Data Structures for Data Science", "terms": ["Winter"], "prereq": ["SC/MATH1019", "LE/EECS1516"], "coreq": [], "yearLong": false },
+    { "code": "AP/ITEC3221", "title": "Data and Information Management", "terms": ["Fall"], "prereq": ["LE/EECS2502"], "coreq": [], "yearLong": false },
+    { "code": "AP/ITEC3310", "title": "Introduction to Data Visualization", "terms": ["Winter"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "AP/WRIT2202", "title": "Introduction to Effective Communication for Data Science", "terms": ["Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "AP/PHIL3500", "title": "Ethics of Data Science", "terms": ["Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SB/MGMT1000", "title": "Introduction to Business", "terms": ["Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SB/MKTG1030", "title": "Marketing Management", "terms": ["Winter"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SB/FINE2000", "title": "Introduction To Finance", "terms": ["Fall"], "prereq": [], "coreq": [], "yearLong": false },
+    { "code": "SB/ACTG2010", "title": "Introduction To Financial Accounting I", "terms": ["Summer", "Fall"], "prereq": [], "coreq": [], "yearLong": false }
+  ]
+}
