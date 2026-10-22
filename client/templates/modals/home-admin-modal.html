@@ -23,15 +23,48 @@
 
                 <h3>About Section</h3>
                 <div class="form-group">
+                    <label>About Headline:</label>
+                    <textarea name="aboutHeading" class="heading-input" required placeholder="Not your *typical*&#10;data scientist."></textarea>
+                    <small>New line = line break. Wrap words in *asterisks* for the accent style.</small>
+                </div>
+                <div class="form-group">
                     <label>About Body:</label>
                     <textarea name="aboutBody" required placeholder="Enter about text. Separate paragraphs with blank lines."></textarea>
                     <small>Separate paragraphs with blank lines (press Enter twice between paragraphs)</small>
                 </div>
 
+                <h3>Projects Section</h3>
+                <div class="form-group">
+                    <label>Projects Headline:</label>
+                    <textarea name="projectsHeading" class="heading-input" required placeholder="Selected&#10;*Projects*"></textarea>
+                    <small>New line = line break. Wrap words in *asterisks* for the smaller, muted style.</small>
+                </div>
+
                 <h3>Contact Section</h3>
+                <div class="form-group">
+                    <label>Contact Headline:</label>
+                    <textarea name="contactHeading" class="heading-input" required placeholder="Let's&#10;*talk data.*"></textarea>
+                    <small>New line = line break. Wrap words in *asterisks* for the muted style.</small>
+                </div>
                 <div class="form-group">
                     <label>Contact Body:</label>
                     <textarea name="contactBody" required placeholder="Open to data analyst roles..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contact Links:</label>
+                    <div id="contactLinksEditor" class="link-editor"></div>
+                    <button type="button" class="btn-secondary" id="addContactLinkButton">+ Add Link</button>
+                    <small>For email, use mailto:you@example.com as the URL</small>
+                </div>
+
+                <h3>Footer</h3>
+                <div class="form-group">
+                    <label>Footer Left:</label>
+                    <input type="text" name="footerLeft" placeholder="© 2026 Sendija Kurzemniece">
+                </div>
+                <div class="form-group">
+                    <label>Footer Right:</label>
+                    <input type="text" name="footerRight" placeholder="Toronto, Canada">
                 </div>
 
                 <button type="submit" class="btn-primary">Save Changes</button>

@@ -4,6 +4,13 @@ function esc(s) {
         .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+// Headline markup: newline -> <br>, *text* -> <tag>text</tag> (accent/muted style)
+function formatHeading(text, tag) {
+    return esc(text)
+        .replace(/\*([^*]+)\*/g, `<${tag}>$1</${tag}>`)
+        .replace(/\n/g, '<br>');
+}
+
 const BAR_HEIGHTS = [45, 70, 55, 90, 65, 80, 50, 75, 95, 60, 85, 40];
 const BARS_HTML = BAR_HEIGHTS.map((h, i) =>
     `<div class="bar" style="height:${h}%;animation-delay:${(0.2 + i * 0.1).toFixed(1)}s"></div>`
@@ -113,13 +120,24 @@ function renderHomeContent(data) {
     }
 
     if (data.about) {
+        const aboutHeading = document.querySelector('.about-heading');
+        if (aboutHeading && data.about.heading) aboutHeading.innerHTML = formatHeading(data.about.heading, 'em');
+
         const aboutBody = document.getElementById('aboutBody');
         if (aboutBody && data.about.body) {
             aboutBody.innerHTML = data.about.body.map(p => `<p>${esc(p)}</p>`).join('');
         }
     }
 
+    if (data.projects) {
+        const projectsTitle = document.querySelector('.projects-title');
+        if (projectsTitle && data.projects.heading) projectsTitle.innerHTML = formatHeading(data.projects.heading, 'span');
+    }
+
     if (data.contact) {
+        const contactHeading = document.querySelector('.contact-heading');
+        if (contactHeading && data.contact.heading) contactHeading.innerHTML = formatHeading(data.contact.heading, 'em');
+
         const contactBody = document.getElementById('contactBody');
         if (contactBody) contactBody.textContent = data.contact.body;
 

@@ -9,7 +9,7 @@
     "skillTags": ["Python", "SQL", "Power BI", "Excel", "Pandas", "Scikit-learn", "XGBoost", "DAX"]
   },
   "about": {
-    "heading": "Not your typical\ndata scientist.",
+    "heading": "Not your *typical*\ndata scientist.",
     "body": [
       "I'm Sendija, a detail-oriented and curious graduate who recently transitioned from a background in Asian Studies and freelance translation into data analytics. For years, I worked closely with language, structure, and communication, and I realized that many of the things I enjoyed — precision, pattern-finding, and clear storytelling — naturally carried over into data analysis.",
       "Once I began exploring tools like Excel, SQL, Power BI, and Python, I found that I genuinely liked working with datasets, discovering insights, and creating clean, meaningful visualizations. Since then, I've been steadily building my technical foundation through self-learning and courses, including the Google Advanced Data Analytics Certification, while creating hands-on projects to strengthen my skills.",
@@ -17,8 +17,11 @@
       "Outside of data, I'm someone who values learning for its own sake, enjoys creative projects, and appreciates work that feels both challenging and meaningful. As I continue developing my technical skills, I'm looking for opportunities where I can contribute, learn, and grow."
     ]
   },
+  "projects": {
+    "heading": "Selected\n*Projects*"
+  },
   "contact": {
-    "heading": "Let's talk data.",
+    "heading": "Let's\n*talk data.*",
     "body": "Open to data analyst, junior data scientist, and ML-adjacent roles in Toronto or remote.",
     "links": [
       { "label": "Email",    "href": "mailto:sendijaievakurzemniece@gmail.com" },

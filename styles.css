@@ -503,6 +503,14 @@ footer p {
 }
 .form-group textarea { min-height: 100px; resize: vertical; }
 .form-group textarea[name="aboutBody"] { min-height: 200px; }
+.form-group textarea.heading-input { min-height: 70px; }
+.link-editor { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+.link-row { display: grid; grid-template-columns: 1fr 2fr auto; gap: 0.5rem; align-items: center; }
+.link-row .btn-secondary { padding: 0.6rem 0.85rem; }
+@media (max-width: 600px) {
+  .link-row { grid-template-columns: 1fr auto; }
+  .link-row input[name="linkHref"] { grid-column: 1 / -1; grid-row: 2; }
+}
 .form-group small { display: block; margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.8rem; }
 
 .form-actions { display: flex; gap: 1rem; }
