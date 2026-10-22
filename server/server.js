@@ -38,15 +38,23 @@ app.use(session({
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Serve static files from parent directory (Portfolio root).
+// Serve only the public parts of the project — never the project root, which
+// holds server code, notes and other private files.
 // Use no-cache so browsers (and Cloudflare) revalidate via ETag and pick up
 // deploys immediately — the site has no asset-versioning build step, so a long
 // cache would otherwise serve stale JS/CSS for hours after a change.
-app.use(express.static(path.join(__dirname, '..'), {
+const ROOT = path.join(__dirname, '..');
+const staticOptions = {
     setHeaders: (res) => {
         res.setHeader('Cache-Control', 'no-cache');
     }
-}));
+};
+app.use('/client', express.static(path.join(ROOT, 'client'), staticOptions));
+app.use('/data', express.static(path.join(ROOT, 'data'), staticOptions));
+app.get('/styles.css', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.sendFile(path.join(ROOT, 'styles.css'));
+});
 
 // Authentication middleware
 function requireAuth(req, res, next) {
