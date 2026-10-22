@@ -2,6 +2,8 @@
 let projectsData = null;
 let homeData = null;
 let blogData = null;
+let courseCatalog = null;
+let coursePlan = null;
 
 // Load projects data from JSON
 async function loadProjectsData() {
@@ -144,6 +146,66 @@ async function saveBlogData(data) {
         return result;
     } catch (error) {
         console.error('Error saving blog data:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+// Load the course catalog from JSON
+async function loadCourseCatalog() {
+    try {
+        const response = await fetch('/data/courses.json');
+        courseCatalog = await response.json();
+        return courseCatalog;
+    } catch (error) {
+        console.error('Error loading course catalog:', error);
+        return null;
+    }
+}
+
+// Load the saved course plan from JSON
+async function loadCoursePlan() {
+    try {
+        const response = await fetch('/data/course-plan.json');
+        coursePlan = await response.json();
+        return coursePlan;
+    } catch (error) {
+        console.error('Error loading course plan:', error);
+        return null;
+    }
+}
+
+// Save the course plan to server
+async function saveCoursePlan(data) {
+    try {
+        const response = await fetch('/api/course-plan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error saving course plan:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+// Save the course catalog to server
+async function saveCourseCatalog(data) {
+    try {
+        const response = await fetch('/api/course-catalog', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error saving course catalog:', error);
         return { success: false, error: error.message };
     }
 }

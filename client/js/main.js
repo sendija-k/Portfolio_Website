@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     initHomeAdmin();
     initProjectsAdmin();
     initBlogAdmin();
+    initCourseDataAdmin();
 
     const homeDataResult = await loadHomeData();
     if (homeDataResult) {
@@ -31,8 +32,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     initBlogShortcut();
+    initCourseShortcut();
 
     if (window.location.pathname === '/blog') {
         handleBlogAccess();
+    }
+
+    if (window.location.pathname === '/course') {
+        handleCourseAccess();
     }
 });

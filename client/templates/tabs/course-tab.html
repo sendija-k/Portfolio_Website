@@ -1,0 +1,48 @@
+<div id="course" class="tab-content">
+    <button id="courseBackButton" class="back-to-home-button">← Back to Home</button>
+    <h1 id="courseTitle">Course Planner</h1>
+    <p class="course-subtitle">Prerequisite map and semester-by-semester plan toward graduation.</p>
+
+    <div class="course-plan-controls">
+        <select id="coursePlanSelect" class="course-plan-select"></select>
+        <button id="courseNewPlanButton" type="button" class="course-control-button">+ New Plan</button>
+        <button id="courseDuplicatePlanButton" type="button" class="course-control-button">Duplicate</button>
+        <button id="courseRenamePlanButton" type="button" class="course-control-button">Rename</button>
+        <button id="courseDeletePlanButton" type="button" class="course-control-button">Delete</button>
+        <button id="courseComparePlansButton" type="button" class="course-control-button">Compare Plans</button>
+    </div>
+
+    <div id="coursePlanCompare" class="course-plan-compare" style="display: none;">
+        <div class="course-compare-table-wrapper">
+            <table id="coursePlanCompareTable" class="course-compare-table"></table>
+        </div>
+    </div>
+
+    <div id="courseClearedNotice" class="course-cleared-notice" style="display: none;"></div>
+
+    <section id="prereqMap" class="course-section">
+        <h2 class="course-section-heading">
+            Prerequisite Map
+            <button type="button" id="prereqMapClearSelection" class="prereq-map-clear-link" style="display: none;">Clear selection</button>
+        </h2>
+        <p class="course-map-hint">Click a course to highlight the chain of prerequisites leading to it.</p>
+        <div id="prereqMapWrapper" class="prereq-map-wrapper">
+            <svg id="prereqMapConnectors" class="prereq-map-connectors"></svg>
+            <div id="prereqMapGrid" class="prereq-map-grid"></div>
+        </div>
+    </section>
+
+    <section id="semesterPlanner" class="course-section">
+        <h2 class="course-section-heading">Semester Planner</h2>
+        <p id="coursePlanProgress" class="course-plan-progress"></p>
+
+        <div class="course-generate-row">
+            <label for="courseMaxPerTermInput">Max courses/term for auto-fill:</label>
+            <input type="number" id="courseMaxPerTermInput" min="1" max="5" value="5">
+            <button id="courseGenerateTrackButton" type="button" class="course-control-button">Generate Fastest Track</button>
+        </div>
+
+        <div id="semesterPlannerGrid" class="semester-planner-grid"></div>
+        <button id="courseAddTermButton" class="course-add-term-button">+ Show next term</button>
+    </section>
+</div>

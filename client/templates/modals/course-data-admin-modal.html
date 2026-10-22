@@ -1,0 +1,104 @@
+<!-- Course Data Admin Modal -->
+<div id="courseDataAdminModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Admin Panel — Manage Course Data</h2>
+            <button class="close-button" id="closeCourseDataAdminModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="admin-tabs">
+                <button class="admin-tab-button active" data-admin-tab="courseDataList">Course List</button>
+                <button class="admin-tab-button" data-admin-tab="courseDataAdd">Add Course</button>
+                <button class="admin-tab-button" data-admin-tab="courseDataEdit">Edit Course</button>
+            </div>
+
+            <!-- Course List Tab -->
+            <div id="admin-courseDataList" class="admin-tab-content active">
+                <div id="courseDataList" class="projects-list"></div>
+            </div>
+
+            <!-- Add Course Tab -->
+            <div id="admin-courseDataAdd" class="admin-tab-content">
+                <form id="addCourseDataForm" class="project-form">
+                    <h3>Add New Course</h3>
+                    <div class="form-group">
+                        <label>Course Code:</label>
+                        <input type="text" name="code" required placeholder="SC/MATH1013">
+                    </div>
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" name="title" required placeholder="Applied Calculus I">
+                    </div>
+                    <div class="form-group">
+                        <label>Offered in:</label>
+                        <div class="course-term-checkboxes">
+                            <label><input type="checkbox" name="terms" value="Winter"> Winter</label>
+                            <label><input type="checkbox" name="terms" value="Summer"> Summer</label>
+                            <label><input type="checkbox" name="terms" value="Fall"> Fall</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="yearLong"> Year-long course (starts in the checked term, automatically continues into the following term)</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Prerequisites:</label>
+                        <input type="text" name="prereq" placeholder="SC/MATH1131; LE/EECS1015|LE/EECS1560">
+                        <small>";" = and, "|" = or, use full course codes. Leave blank if none.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Co-requisites:</label>
+                        <input type="text" name="coreq" placeholder="SC/MATH1014">
+                        <small>Same syntax as prerequisites — must be taken the same term.</small>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Course</button>
+                </form>
+            </div>
+
+            <!-- Edit Course Tab -->
+            <div id="admin-courseDataEdit" class="admin-tab-content">
+                <div class="form-group">
+                    <label>Select Course to Edit:</label>
+                    <select id="editCourseDataSelect">
+                        <option value="">-- Select a course --</option>
+                    </select>
+                </div>
+                <form id="editCourseDataForm" class="project-form" style="display: none;">
+                    <h3>Edit Course</h3>
+                    <div class="form-group">
+                        <label>Course Code:</label>
+                        <input type="text" name="code" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Offered in:</label>
+                        <div class="course-term-checkboxes">
+                            <label><input type="checkbox" name="terms" value="Winter"> Winter</label>
+                            <label><input type="checkbox" name="terms" value="Summer"> Summer</label>
+                            <label><input type="checkbox" name="terms" value="Fall"> Fall</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="yearLong"> Year-long course (starts in the checked term, automatically continues into the following term)</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Prerequisites:</label>
+                        <input type="text" name="prereq">
+                        <small>";" = and, "|" = or, use full course codes. Leave blank if none.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Co-requisites:</label>
+                        <input type="text" name="coreq">
+                        <small>Same syntax as prerequisites — must be taken the same term.</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Update Course</button>
+                        <button type="button" class="btn-danger" id="deleteCourseDataBtn">Delete Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

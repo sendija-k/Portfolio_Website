@@ -1,0 +1,392 @@
+{
+  "activePlanId": "plan-1",
+  "plans": [
+    {
+      "id": "plan-1",
+      "name": "og plan",
+      "terms": {
+        "2027-Winter": {
+          "courses": [
+            "SC/MATH1013",
+            "SC/MATH1025",
+            "SC/MATH1131",
+            "LE/EECS1015"
+          ],
+          "mode": "normal"
+        },
+        "2027-Summer": {
+          "courses": [
+            "SC/MATH1014"
+          ],
+          "mode": "normal"
+        },
+        "2027-Fall": {
+          "courses": [
+            "SC/MATH1130",
+            "SC/MATH2015",
+            "SB/FINE2000",
+            "SB/MGMT1000",
+            "SC/MATH2030"
+          ],
+          "mode": "normal"
+        },
+        "2028-Winter": {
+          "courses": [
+            "SC/MATH2131",
+            "SC/MATH2130",
+            "LE/EECS1560",
+            "LE/EECS1516"
+          ],
+          "mode": "normal"
+        },
+        "2028-Summer": {
+          "courses": [],
+          "mode": "skip"
+        },
+        "2028-Fall": {
+          "courses": [
+            "AP/WRIT2202",
+            "SB/ACTG2010",
+            "SC/MATH3330",
+            "SC/MATH1019"
+          ],
+          "mode": "normal"
+        },
+        "2029-Winter": {
+          "courses": [
+            "SC/MATH3333",
+            "AP/ITEC3310",
+            "LE/EECS2502",
+            "SB/MKTG1030"
+          ],
+          "mode": "normal"
+        },
+        "2029-Fall": {
+          "courses": [
+            "SC/MATH4036",
+            "AP/PHIL3500",
+            "SC/MATH4949",
+            "AP/ITEC3221"
+          ],
+          "mode": "normal"
+        },
+        "2030-Winter": {
+          "courses": [
+            "SC/MATH4931"
+          ],
+          "mode": "normal"
+        }
+      },
+      "updatedAt": "2026-08-17T05:10:03.404Z"
+    },
+    {
+      "id": "plan-2",
+      "name": "fastest track - all terms, 5 courses",
+      "terms": {
+        "2027-Winter": {
+          "courses": [
+            "SC/MATH1013",
+            "LE/EECS1015",
+            "SC/MATH1025",
+            "SC/MATH1019",
+            "SC/MATH1131"
+          ],
+          "mode": "normal"
+        },
+        "2027-Summer": {
+          "courses": [
+            "SC/MATH1014",
+            "SC/MATH3330",
+            "SB/ACTG2010"
+          ],
+          "mode": "normal"
+        },
+        "2027-Fall": {
+          "courses": [
+            "LE/EECS1560",
+            "SC/MATH2015",
+            "SC/MATH2030",
+            "AP/WRIT2202",
+            "SC/MATH1130"
+          ],
+          "mode": "normal"
+        },
+        "2028-Winter": {
+          "courses": [
+            "LE/EECS1516",
+            "SC/MATH2131",
+            "SC/MATH3333",
+            "AP/ITEC3310",
+            "SB/MKTG1030"
+          ],
+          "mode": "normal"
+        },
+        "2028-Fall": {
+          "courses": [
+            "AP/PHIL3500",
+            "SB/FINE2000",
+            "SB/MGMT1000",
+            "SC/MATH4036",
+            "SC/MATH4949"
+          ],
+          "mode": "normal"
+        },
+        "2029-Winter": {
+          "courses": [
+            "LE/EECS2502",
+            "SC/MATH2130",
+            "SC/MATH4931"
+          ],
+          "mode": "normal"
+        },
+        "2029-Fall": {
+          "courses": [
+            "AP/ITEC3221"
+          ],
+          "mode": "normal"
+        }
+      },
+      "updatedAt": "2026-08-17T03:16:48.441Z"
+    },
+    {
+      "id": "plan-3",
+      "name": "fast track - all terms, 4 courses",
+      "terms": {
+        "2027-Winter": {
+          "courses": [
+            "SC/MATH1013",
+            "LE/EECS1015",
+            "SC/MATH1025",
+            "SC/MATH1019"
+          ],
+          "mode": "normal"
+        },
+        "2027-Summer": {
+          "courses": [
+            "SC/MATH1014",
+            "SC/MATH1131",
+            "SB/ACTG2010"
+          ],
+          "mode": "normal"
+        },
+        "2027-Fall": {
+          "courses": [
+            "LE/EECS1560",
+            "SC/MATH2015",
+            "SC/MATH2030",
+            "AP/WRIT2202"
+          ],
+          "mode": "normal"
+        },
+        "2028-Winter": {
+          "courses": [
+            "LE/EECS1516",
+            "SC/MATH2131",
+            "SC/MATH3333",
+            "AP/ITEC3310"
+          ],
+          "mode": "normal"
+        },
+        "2028-Summer": {
+          "courses": [
+            "SC/MATH3330"
+          ],
+          "mode": "normal"
+        },
+        "2028-Fall": {
+          "courses": [
+            "SC/MATH1130",
+            "AP/PHIL3500",
+            "SB/FINE2000",
+            "SB/MGMT1000"
+          ],
+          "mode": "normal"
+        },
+        "2029-Winter": {
+          "courses": [
+            "LE/EECS2502",
+            "SB/MKTG1030",
+            "SC/MATH2130",
+            "SC/MATH4931"
+          ],
+          "mode": "normal"
+        },
+        "2029-Fall": {
+          "courses": [
+            "AP/ITEC3221",
+            "SC/MATH4036",
+            "SC/MATH4949"
+          ],
+          "mode": "normal"
+        }
+      },
+      "updatedAt": "2026-08-17T03:18:37.339Z"
+    },
+    {
+      "id": "plan-4",
+      "name": "test",
+      "terms": {
+        "2027-Winter": {
+          "courses": [
+            "SC/MATH1013",
+            "SC/MATH1025",
+            "SC/MATH1131",
+            "LE/EECS1015",
+            "SC/MATH1019"
+          ],
+          "mode": "normal"
+        },
+        "2028-Fall": {
+          "courses": [
+            "AP/PHIL3500",
+            "SB/FINE2000",
+            "SB/MGMT1000",
+            "SC/MATH1130"
+          ],
+          "mode": "normal"
+        },
+        "2029-Winter": {
+          "courses": [
+            "LE/EECS2502",
+            "SC/MATH2131",
+            "SB/MKTG1030",
+            "SC/MATH3333"
+          ],
+          "mode": "normal"
+        },
+        "2027-Summer": {
+          "courses": [],
+          "mode": "skip"
+        },
+        "2027-Fall": {
+          "courses": [
+            "SC/MATH1014"
+          ],
+          "mode": "coop"
+        },
+        "2028-Winter": {
+          "courses": [
+            "LE/EECS1516",
+            "SC/MATH2015",
+            "SC/MATH2030",
+            "AP/ITEC3310",
+            "LE/EECS1560"
+          ],
+          "mode": "normal"
+        },
+        "2029-Fall": {
+          "courses": [
+            "AP/ITEC3221",
+            "SB/ACTG2010",
+            "AP/WRIT2202"
+          ],
+          "mode": "normal"
+        },
+        "2030-Winter": {
+          "courses": [
+            "SC/MATH4931",
+            "SC/MATH2130"
+          ],
+          "mode": "normal"
+        },
+        "2030-Fall": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2028-Summer": {
+          "courses": [],
+          "mode": "skip"
+        },
+        "2029-Summer": {
+          "courses": [],
+          "mode": "skip"
+        },
+        "2031-Winter": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2031-Fall": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2032-Winter": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2032-Fall": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2033-Winter": {
+          "courses": [],
+          "mode": "normal"
+        }
+      },
+      "updatedAt": "2026-08-17T05:09:21.893Z"
+    },
+    {
+      "id": "plan-5",
+      "name": "og plan test",
+      "terms": {
+        "2027-Winter": {
+          "courses": [
+            "SC/MATH1013",
+            "SC/MATH1025",
+            "SC/MATH1131",
+            "LE/EECS1015"
+          ],
+          "mode": "normal"
+        },
+        "2027-Summer": {
+          "courses": [
+            "SC/MATH1014"
+          ],
+          "mode": "normal"
+        },
+        "2027-Fall": {
+          "courses": [
+            "SC/MATH1130",
+            "SC/MATH2015",
+            "SC/MATH2030",
+            "LE/EECS1560",
+            "SB/MGMT1000"
+          ],
+          "mode": "normal"
+        },
+        "2028-Winter": {
+          "courses": [
+            "SC/MATH2131",
+            "SC/MATH2130",
+            "LE/EECS1516",
+            "AP/ITEC3310"
+          ],
+          "mode": "normal"
+        },
+        "2028-Summer": {
+          "courses": [],
+          "mode": "skip"
+        },
+        "2028-Fall": {
+          "courses": [
+            "SC/MATH3330",
+            "SC/MATH1019"
+          ],
+          "mode": "normal"
+        },
+        "2029-Winter": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2029-Fall": {
+          "courses": [],
+          "mode": "normal"
+        },
+        "2030-Winter": {
+          "courses": [],
+          "mode": "normal"
+        }
+      },
+      "updatedAt": "2026-08-17T05:19:17.903Z"
+    }
+  ]
+}

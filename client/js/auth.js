@@ -59,12 +59,17 @@ function initAuth() {
                 const projectsAdminModal = document.getElementById('projectsAdminModal');
                 const blogAdminModal = document.getElementById('blogAdminModal');
 
+                const courseDataAdminModal = document.getElementById('courseDataAdminModal');
+
                 if (pendingPanel === 'home') {
                     homeAdminModal.classList.add('active');
                     await loadHomeAdminData();
                 } else if (pendingPanel === 'blog') {
                     blogAdminModal.classList.add('active');
                     await loadBlogAdminData();
+                } else if (pendingPanel === 'courseData' && courseDataAdminModal) {
+                    courseDataAdminModal.classList.add('active');
+                    loadAdminCourseData();
                 } else {
                     projectsAdminModal.classList.add('active');
                     loadAdminProjects();
