@@ -49,6 +49,20 @@ const staticOptions = {
         res.setHeader('Cache-Control', 'no-cache');
     }
 };
+// Data behind the hidden blog and course planner is login-only
+const PRIVATE_DATA_FILES = ['blog-data.json', 'courses.json', 'course-plan.json'];
+app.use('/data', (req, res, next) => {
+    // Compare the decoded, normalized filename so encoded or doubled-slash URLs can't slip past
+    let file;
+    try {
+        file = path.posix.basename(path.posix.normalize(decodeURIComponent(req.path))).toLowerCase();
+    } catch {
+        return res.status(400).end();
+    }
+    if (PRIVATE_DATA_FILES.includes(file)) return requireAuth(req, res, next);
+    next();
+});
+
 app.use('/client', express.static(path.join(ROOT, 'client'), staticOptions));
 app.use('/data', express.static(path.join(ROOT, 'data'), staticOptions));
 app.get('/styles.css', (req, res) => {
