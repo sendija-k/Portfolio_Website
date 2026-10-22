@@ -82,12 +82,25 @@ function renderSecondary(projects) {
     });
 }
 
+const DEFAULT_PROJECTS_COUNT = '{n} projects / 2024–2025';
+let projectsTotal = 0;
+
+// Count label next to the projects headline; {n} is replaced with the number of projects
+function renderProjectsCount() {
+    const countEl = document.getElementById('projectsCount');
+    if (!countEl) return;
+    const label = (homeData && homeData.projects && homeData.projects.countLabel != null)
+        ? homeData.projects.countLabel
+        : DEFAULT_PROJECTS_COUNT;
+    countEl.textContent = label.replace(/\{n\}/g, projectsTotal);
+}
+
 function renderProjects(data) {
     if (!data || !data.projects) return;
     const projects = data.projects.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
 
-    const countEl = document.getElementById('projectsCount');
-    if (countEl) countEl.textContent = projects.length + ' projects / 2024–2025';
+    projectsTotal = projects.length;
+    renderProjectsCount();
 
     setupScrollObserver();
     if (projects[0]) renderFeatured(projects[0]);
@@ -133,6 +146,7 @@ function renderHomeContent(data) {
         const projectsTitle = document.querySelector('.projects-title');
         if (projectsTitle && data.projects.heading) projectsTitle.innerHTML = formatHeading(data.projects.heading, 'span');
     }
+    renderProjectsCount();
 
     if (data.contact) {
         const contactHeading = document.querySelector('.contact-heading');
@@ -158,7 +172,7 @@ function renderHomeContent(data) {
     }
 
     const nameText = data.hero ? data.hero.name.replace('\n', ' ') : 'Sendija Kurzemniece';
-    document.title = nameText + ' — Data Scientist';
+    document.title = nameText + ' — Data Analyst';
 }
 
 function updatePhotoContainer() {}

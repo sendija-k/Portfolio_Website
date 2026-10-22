@@ -49,6 +49,7 @@ function initHomeAdmin() {
             homeData.about.heading = normalizeHeading(formData.get('aboutHeading'));
             homeData.projects = homeData.projects || {};
             homeData.projects.heading = normalizeHeading(formData.get('projectsHeading'));
+            homeData.projects.countLabel = formData.get('projectsCountLabel').trim();
             homeData.contact.heading = normalizeHeading(formData.get('contactHeading'));
             homeData.contact.body = formData.get('contactBody');
             homeData.contact.links = Array.from(document.querySelectorAll('#contactLinksEditor .link-row'))
@@ -82,6 +83,9 @@ async function loadHomeAdminData() {
     form.elements['aboutBody'].value    = (homeData.about.body || []).join('\n\n');
     form.elements['aboutHeading'].value    = homeData.about.heading || '';
     form.elements['projectsHeading'].value = (homeData.projects && homeData.projects.heading) || '';
+    form.elements['projectsCountLabel'].value = (homeData.projects && homeData.projects.countLabel != null)
+        ? homeData.projects.countLabel
+        : DEFAULT_PROJECTS_COUNT;
     form.elements['contactHeading'].value  = homeData.contact.heading || '';
     form.elements['contactBody'].value  = homeData.contact.body || '';
     form.elements['footerLeft'].value   = (homeData.footer && homeData.footer.left) || '';
